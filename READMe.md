@@ -15,12 +15,8 @@ import umap.umap_ as umap
 digits = load_digits()
 data = digits.data
 
-
-
 reducer = umap.UMAP(min_dist=0.1, n_components=2, n_neighbors=15, verbose=True)
 reducer.fit(digits.data)
-
-
 
 embedding = reducer.transform(digits.data)
 # Verify that the result of calling transform is
@@ -39,7 +35,7 @@ plt.title('UMAP projection of the Digits dataset', fontsize=24);
 ```r
 library(umap)
 iris.umap = umap(MNIST.data)
-plot.iris(iris.umap, MNIST.labels)
+plot.iris(MNIST.umap, MNIST.labels)
 ```
 
 ## Structure of the repository:
@@ -54,7 +50,7 @@ plot.iris(iris.umap, MNIST.labels)
 ## How to test the animations quickly:
 
 Simply download the zip files in the executables folder corresponding to your operating system and launch them.
-**MAC OSX** : Don't forget to add the executable as trustworthy to be able to launch it. To do so, hold `ctrl` while clicking on the executable and click `open`.
+**MAC OSX** : Don't forget to add the executable as trustworthy to be able to launch it. To do so, **hold** `ctrl` while clicking on the executable and click `open`.
  
 
 
