@@ -57,5 +57,3 @@ plot.iris(MNIST.umap, MNIST.labels)
 Simply download the zip files in the executables folder corresponding to your operating system and launch them.
 **MAC OSX** : Don't forget to add the executable as trustworthy to be able to launch it. To do so, **hold** `ctrl` while clicking on the executable and click `open`.
  
-
-https://youtu.be/VPq4Ktf2zJ4
