@@ -1,8 +1,9 @@
 # UMAP Algorithm: Code for a university presentation
 
-[![Alt text](https://img.youtube.com/vi/VPq4Ktf2zJ4/0.jpg)](https://www.youtube.com/watch?v=VPq4Ktf2zJ4)
 
-https://youtu.be/VPq4Ktf2zJ4
+## The presentation:
+
+[![Alt text](https://img.youtube.com/vi/VPq4Ktf2zJ4/0.jpg)](https://www.youtube.com/watch?v=VPq4Ktf2zJ4)
 
 ## Methodology:
 
