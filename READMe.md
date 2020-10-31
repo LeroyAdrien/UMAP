@@ -1,39 +1,60 @@
-Projet A: Visualisation 3D de UMAP
+# UMAP Algorithm: Code for a university presentation
 
-1) Transformer un CSV en liste de listes -Good
-a) Importer le fichier csv 
-b) le convertir
+## Methodology:
 
-2) Convertir chaque liste en une image
-a) obtenir une image
-b) la scaler, modifier sa position
+### Launch UMAP in Python:
 
+```python
+#You need to install the library umap-learn
 
-3) coder UMAP
+import numpy as np
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+import umap.umap_ as umap
 
-4) Projeter en 3D chaque image une fois UMAP réalisé 
-
-
-Projet B: Montrer le passage de 3D vers 2D
-
-1) Points en 3d reliés par des arrêtes et probabilités entre les noeuds indiquées en "hautes" dimensions
-2) Points en 3d reliés par des arrêtes et probabilités entre les noeuds indiquées en "basses" dimensions
-3) Points en 2D aléatoirement situés qui se déplacent pour correspondre aux probabilités en "basses" dimensions
+digits = load_digits()
+data = digits.data
 
 
 
-Structures!!
+reducer = umap.UMAP(min_dist=0.1, n_components=2, n_neighbors=15, verbose=True)
+reducer.fit(digits.data)
 
-Projet A:
 
-1) Une classe "Statique" qui lit les csv et les convertit en liste de listes | Un fichier csv -> List<float[n]> avec n la dimension des objets
-2) Une classe "Statique" qui prend une liste et renvoie une image | float[n] -> GameObject (Prefab "plan", update toujours tourné vers la caméra)
-3) Une classe "Statique" qui fait UMAP | List<float[n]> -> List<float>[n'] avec n' la dimension voulue
-4) Une classe qui représente les points | List<float>[n'] + List<GameObject> 
 
-Projet B:
+embedding = reducer.transform(digits.data)
+# Verify that the result of calling transform is
+# identical to accessing the embedding_ attribute
+assert(np.all(embedding == reducer.embedding_))
+embedding.shape
 
-1) Une classe qui représente les arrêtes entre les points "haute" dimension et en "basse" dimension | List<float>[n'] 
-3) Une classe qui réprésente des points aléatoires en 2D et fait le lien avec les points en 3D et fait bouger les points en 2D à chaque itération List<float>[n'] + List<GameObject> 
+plt.scatter(embedding[:, 0], embedding[:, 1], c=digits.target, cmap='Spectral', s=5)
+plt.gca().set_aspect('equal', 'datalim')
+plt.colorbar(boundaries=np.arange(11)-0.5).set_ticks(np.arange(10))
+plt.title('UMAP projection of the Digits dataset', fontsize=24);
+```
+
+
+### Launch UMAP in R:
+```r
+library(umap)
+iris.umap = umap(MNIST.data)
+plot.iris(iris.umap, MNIST.labels)
+```
+
+## Structure of the repository:
+
+* CSVs : UMAP results computed using the python script on the MNIST Dataset
+* Executabes : Ready to launch UMAP animations, simply download the zip corresponding to your operating system to test the program
+* Python : Python scripts to understand/Launch UMAP and to generate results 
+	* Notebooks : Python scripts in jupyter Notebook for simplicty
+	* UMAP.py : UMAP python script coded from scratch, used to generate the results
+* UMAP_Animation : Unity code to animate UMAP results on the MNIST dataset
+
+## How to test the animations quickly:
+
+Simply download the zip files in the executables folder corresponding to your operating system and launch them.
+**MAC OSX** : Don't forget to add the executable as trustworthy to be able to launch it. To do so, hold `ctrl` while clicking on the executable and click `open`.
+ 
 
 
